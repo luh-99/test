@@ -10,7 +10,7 @@ import nest_asyncio
 # Apply nest_asyncio to allow nested event loops
 nest_asyncio.apply()
 
-TOKEN = 'YOUR_BOT_TOKEN'  # Replace with your actual bot token
+TOKEN = '7401322967:AAH0idIlFvGjQU4JpPNB4v9raBe-DcxftAw'  # Replace with your actual bot token
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('Send me a .webp image and I will convert it to .png and .jpg formats!')
