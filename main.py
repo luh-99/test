@@ -4,6 +4,7 @@ from PIL import Image
 from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, ApplicationBuilder, ContextTypes
 from telegram.ext import filters
+import asyncio
 
 TOKEN = '7467798825:AAFf4L4WFZby8P_Rz5Fj9HxJtSb5gsfluxE'  # Replace with your actual bot token
 
@@ -43,5 +44,12 @@ async def main() -> None:
     await application.run_polling()
 
 if __name__ == '__main__':
-    import asyncio
-    asyncio.run(main())
+    try:
+        asyncio.run(main())  # Use this if you're sure you're in a fresh environment
+    except RuntimeError as e:
+        if 'event loop is already running' in str(e):
+            # Handle the case if the event loop is already running
+            loop = asyncio.get_event_loop()
+            loop.create_task(main())
+        else:
+            raise
