@@ -6,7 +6,7 @@ from telegram.ext import CommandHandler, MessageHandler, ApplicationBuilder, Con
 from telegram.ext import filters
 import asyncio
 
-TOKEN = '7467798825:AAFf4L4WFZby8P_Rz5Fj9HxJtSb5gsfluxE'  # Replace with your actual bot token
+TOKEN = 'YOUR_BOT_TOKEN'  # Replace with your actual bot token
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('Send me a .webp image and I will convert it to .png and .jpg formats!')
@@ -45,10 +45,9 @@ async def main() -> None:
 
 if __name__ == '__main__':
     try:
-        asyncio.run(main())  # Use this if you're sure you're in a fresh environment
+        asyncio.run(main())
     except RuntimeError as e:
         if 'event loop is already running' in str(e):
-            # Handle the case if the event loop is already running
             loop = asyncio.get_event_loop()
             loop.create_task(main())
         else:
