@@ -5,7 +5,7 @@ from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, ApplicationBuilder, ContextTypes
 from telegram.ext import filters
 
-TOKEN = '7467798825:AAFf4L4WFZby8P_Rz5Fj9HxJtSb5gsfluxE'  # Replace with your actual bot token
+TOKEN = 'YOUR_BOT_TOKEN'  # Replace with your actual bot token
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('Send me a .webp image and I will convert it to .png and .jpg formats!')
