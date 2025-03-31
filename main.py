@@ -5,6 +5,10 @@ from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, ApplicationBuilder, ContextTypes
 from telegram.ext import filters
 import asyncio
+import nest_asyncio
+
+# Apply nest_asyncio to allow nested event loops
+nest_asyncio.apply()
 
 TOKEN = 'YOUR_BOT_TOKEN'  # Replace with your actual bot token
 
@@ -44,11 +48,4 @@ async def main() -> None:
     await application.run_polling()
 
 if __name__ == '__main__':
-    try:
-        asyncio.run(main())
-    except RuntimeError as e:
-        if 'event loop is already running' in str(e):
-            loop = asyncio.get_event_loop()
-            loop.create_task(main())
-        else:
-            raise
+    asyncio.run(main())
